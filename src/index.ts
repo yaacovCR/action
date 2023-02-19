@@ -27,11 +27,13 @@ const getOptionalInput = (name: string) => core.getInput(name) || undefined;
     await gitUtils.setupUser();
   }
 
+  /*
   console.log("setting GitHub credentials");
   await fs.writeFile(
     `${process.env.HOME}/.netrc`,
     `machine github.com\nlogin github-actions[bot]\npassword ${githubToken}`
   );
+  */
 
   let { changesets } = await readChangesetState();
 
@@ -77,11 +79,13 @@ const getOptionalInput = (name: string) => core.getInput(name) || undefined;
           );
         }
       } else {
+        /*
         console.log("No user .npmrc file found, creating one");
         fs.writeFileSync(
           userNpmrcPath,
           `//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}\n`
         );
+        */
       }
 
       const result = await runPublish({
